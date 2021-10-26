@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="TestingStudentKnowledge.LogInPage">
+	<ContentPage.Content>
+		<StackLayout>
+			<Label Text="Авторизація"
+				HorizontalOptions="CenterAndExpand"
+				FontSize="36"
+                   FontAttributes="Bold"
+                   TextColor="LimeGreen"
+                   Margin="0, 110, 0, 0"
+				   />
+            <Entry
+                x:Name="nameEntry"
+                FontSize="36"
+                TextColor="LimeGreen"
+                Placeholder="Ім'я"
+                Margin="40,40,40,20"
+                />
+            <Entry
+                x:Name="surNameEntry"
+                FontSize="36"
+                TextColor="LimeGreen"
+                Placeholder="Прізвище"
+                Margin="40,20,40,20"
+                />
+            <Button
+                x:Name="logInButton"
+                Text="Ввійти"
+                TextTransform="None"
+                FontSize="36"
+                TextColor="White"
+                BackgroundColor="LimeGreen"
+                CornerRadius="75"
+                Margin="40,40,40,0"
+                />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
