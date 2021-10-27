@@ -15,6 +15,17 @@ namespace TestingStudentKnowledge
         public LogInPage()
         {
             InitializeComponent();
+            logInButton.Clicked += GoToMainMenu;
+        }
+
+        private void logInButton_Clicked(object sender, EventArgs e)
+        {
+        }
+
+        private async void GoToMainMenu(object sender, EventArgs e)
+        {
+            MainMenu mainMenu = new MainMenu();
+            await Navigation.PushAsync(mainMenu);
         }
     }
 }

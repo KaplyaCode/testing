@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestingStudentKnowledge.MainMenu"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#191414">
+            <Button
+                x:Name="startTestButton"
+                Text="Розпочати тест"
+                TextTransform="None"
+                FontSize="36"
+                TextColor="White"
+                BackgroundColor="#1DB954"
+                TranslationY="120"
+                CornerRadius="75"
+                Margin="40,20,40,20"
+                />
+            <Button
+                x:Name="leaderboardButton"
+                Text="Таблиця лідерів"
+                TextTransform="None"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="#1DB954"
+                TranslationY="140"
+                CornerRadius="75"
+                Margin="60,20,60,20"
+                />
+            <Button
+                x:Name="settingsButton"
+                Text="Налаштування"
+                TextTransform="None"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="#1DB954"
+                TranslationY="140"
+                CornerRadius="75"
+                Margin="60,20,60,20"
+                />
+            <Button
+                x:Name="exitButton"
+                Text="Вихід"
+                TextTransform="None"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="#BD1900"
+                TranslationY="140"
+                CornerRadius="75"
+                Margin="60,20,60,20"
+                Clicked="exitButton_Clicked"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
