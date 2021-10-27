@@ -17,7 +17,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Прізвище" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="0"/>
-                    <Label Margin="0,0,10,0" Text="Факультет" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="1"/>
+                    <Label Margin="0,0,10,0" Text="Спеціальність" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="1"/>
                     <Label Text="Оцінка" VerticalOptions="Center" FontSize="20" TextColor="White" Grid.Column="2"/>
 
                     <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>

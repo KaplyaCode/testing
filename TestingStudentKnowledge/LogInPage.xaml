@@ -23,7 +23,7 @@
             <Entry
                 x:Name="surNameEntry"
                 FontSize="36"
-                TextColor="#1DB954"
+                TextColor="White"
                 Placeholder="Прізвище"
                 PlaceholderColor="DarkGray"
                 Margin="40,20,40,20"

@@ -10,7 +10,7 @@ namespace TestingStudentKnowledge
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LogInPage());
+            MainPage = new StartTestPage();
         }
 
         protected override void OnStart()
