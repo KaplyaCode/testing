@@ -16,5 +16,10 @@ namespace TestingStudentKnowledge
         {
             InitializeComponent();
         }
+
+        private async void GoToMainMenu(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 }

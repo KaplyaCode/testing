@@ -26,6 +26,7 @@
                 TranslationY="140"
                 CornerRadius="75"
                 Margin="60,20,60,20"
+                Clicked="GoToResultsPage"
                 />
             <Button
                 x:Name="settingsButton"
@@ -48,7 +49,7 @@
                 TranslationY="140"
                 CornerRadius="75"
                 Margin="60,20,60,20"
-                Clicked="exitButton_Clicked"
+                Clicked="GoToLogInPage"
                 />
         </StackLayout>
     </ContentPage.Content>

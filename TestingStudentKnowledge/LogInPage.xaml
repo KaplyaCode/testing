@@ -23,7 +23,7 @@
             <Entry
                 x:Name="surNameEntry"
                 FontSize="36"
-                TextColor="#1DB954"
+                TextColor="White"
                 Placeholder="Прізвище"
                 PlaceholderColor="DarkGray"
                 Margin="40,20,40,20"
@@ -37,7 +37,7 @@
                 BackgroundColor="#1DB954"
                 CornerRadius="75"
                 Margin="40,40,40,0"
-                Clicked="logInButton_Clicked"
+                Clicked="GoToMainMenu"
                 />
 		</StackLayout>
 	</ContentPage.Content>
