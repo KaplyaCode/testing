@@ -37,7 +37,7 @@
                 BackgroundColor="#1DB954"
                 CornerRadius="75"
                 Margin="40,40,40,0"
-                Clicked="logInButton_Clicked"
+                Clicked="GoToMainMenu"
                 />
 		</StackLayout>
 	</ContentPage.Content>
