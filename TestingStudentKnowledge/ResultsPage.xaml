@@ -4,12 +4,14 @@
              x:Class="TestingStudentKnowledge.ResultsPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout Padding="20" Spacing="0" BackgroundColor="#191414">
+        <StackLayout Padding="20" Spacing="0" BackgroundColor="#191414" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             
-            
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start">
             <Label Text="Таблиця результатів" FontSize="30" FontAttributes="Bold" Margin="0,0,0,20" TextColor="#1DB954" HorizontalOptions="CenterAndExpand" />
-
-            <Frame BackgroundColor="#191414" BorderColor="White"  Padding="0">
+            </StackLayout>
+            
+            <StackLayout VerticalOptions="CenterAndExpand">
+            <Frame BackgroundColor="#191414" BorderColor="White"  Padding="0" TranslationY="-300">
                 <Grid Padding="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
@@ -26,6 +28,9 @@
                     <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                 </Grid>
             </Frame>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
             <Button
                 x:Name="mainMenuButton"
                 Text="Головне меню"
@@ -33,11 +38,12 @@
                 FontSize="28"
                 TextColor="White"
                 BackgroundColor="#1DB954"
-                TranslationY="140"
                 CornerRadius="75"
                 Margin="60,20,60,20"
                 Clicked="GoToMainMenu"
+                HorizontalOptions="CenterAndExpand"
                 />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
