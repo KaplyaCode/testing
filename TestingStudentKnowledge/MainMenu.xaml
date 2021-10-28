@@ -12,9 +12,21 @@
                 FontSize="36"
                 TextColor="White"
                 BackgroundColor="#1DB954"
-                TranslationY="120"
+                TranslationY="140"
                 CornerRadius="75"
                 Margin="40,20,40,20"
+                Clicked="GoToStartTestPage"
+                />
+            <Button
+                x:Name="eraseMyResultsButton"
+                Text="Видалити оцінки"
+                TextTransform="None"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="#1DB954"
+                TranslationY="150"
+                CornerRadius="75"
+                Margin="60,20,60,20"
                 />
             <Button
                 x:Name="leaderboardButton"
@@ -23,21 +35,10 @@
                 FontSize="28"
                 TextColor="White"
                 BackgroundColor="#1DB954"
-                TranslationY="140"
+                TranslationY="150"
                 CornerRadius="75"
                 Margin="60,20,60,20"
                 Clicked="GoToResultsPage"
-                />
-            <Button
-                x:Name="settingsButton"
-                Text="Налаштування"
-                TextTransform="None"
-                FontSize="28"
-                TextColor="White"
-                BackgroundColor="#1DB954"
-                TranslationY="140"
-                CornerRadius="75"
-                Margin="60,20,60,20"
                 />
             <Button
                 x:Name="exitButton"
@@ -46,7 +47,7 @@
                 FontSize="28"
                 TextColor="White"
                 BackgroundColor="#BD1900"
-                TranslationY="140"
+                TranslationY="150"
                 CornerRadius="75"
                 Margin="60,20,60,20"
                 Clicked="GoToLogInPage"

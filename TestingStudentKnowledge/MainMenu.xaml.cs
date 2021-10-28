@@ -25,5 +25,11 @@ namespace TestingStudentKnowledge
             ResultsPage resultsPage = new ResultsPage();
             await Navigation.PushAsync(resultsPage);
         }
+
+        private async void GoToStartTestPage(object sender, EventArgs e)
+        {
+            StartTestPage startTestPage = new StartTestPage();
+            await Navigation.PushAsync(startTestPage);
+        }
     }
 }
