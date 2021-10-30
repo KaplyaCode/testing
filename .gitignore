@@ -82,6 +82,7 @@ ipch/
 *.psess
 *.vsp
 *.vspx
+AndroidManifest.xml
 
 # TFS 2012 Local Workspace
 $tf/

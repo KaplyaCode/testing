@@ -16,11 +16,10 @@ namespace TestingStudentKnowledge
             startTestButton.Clicked += CreateQuestions;
         }
 
-        List<Question> Questions;
+        public List<Question> Questions = new List<Question>();
 
         public void CreateQuestions(object sender, EventArgs e)
         {
-            Questions = new List<Question>();
             Questions.Add(new Question() { Facult = "Програмування", question = "Що приймає int?", correctAnswer = 2, Answers = new List<string> { "Літери", "Слова", "Числа", "Дробні числа" } });
             Questions.Add(new Question() { Facult = "Програмування", question = "Що з переліку конвертує String в int?", correctAnswer = 3, Answers = new List<string> { "Int.Convert", "IntConvert()", "String.Convert()", "Convert.ToInt32" } });
             Questions.Add(new Question() { Facult = "Програмування", question = "Як правильно об'явити текстовий тип даних?", correctAnswer = 1, Answers = new List<string> { "String", "string", "myVarString" , "var" } });
@@ -65,6 +64,7 @@ namespace TestingStudentKnowledge
 
         private async void GoToStartTestPage(object sender, EventArgs e)
         {
+            Application.Current.Properties["questions"] = Questions;
             StartTestPage startTestPage = new StartTestPage();
             await Navigation.PushAsync(startTestPage);
         }

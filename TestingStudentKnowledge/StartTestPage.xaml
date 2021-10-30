@@ -7,11 +7,11 @@
         <StackLayout Padding="20" BackgroundColor="#191414">
             <Label Text="Оберіть вашу спеціальність:" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24" TextColor="#1DB954" />
 
-            <Button Margin="0,20,0,5" Text="Програмування" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954"/>
-            <Button Margin="0,10,0,5" Text="Право" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954"/>
-            <Button Margin="0,10,0,5" Text="Економіка" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954"/>
-            <Button Margin="0,10,0,5" Text="Психологія" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954"/>
-            <Button Margin="0,10,0,5" Text="Менеджемент" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954"/>
+            <Button x:Name="programmingButton" Margin="0,20,0,5" Text="Програмування" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954" Clicked="programminButton_Clicked"/>
+            <Button x:Name="lawButton" Margin="0,10,0,5" Text="Право" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954" Clicked="lawButton_Clicked"/>
+            <Button x:Name="economicButton" Margin="0,10,0,5" Text="Економіка" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954" Clicked="economicButton_Clicked"/>
+            <Button x:Name="psychologyButton" Margin="0,10,0,5" Text="Психологія" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954" Clicked="psychologyButton_Clicked"/>
+            <Button x:Name="managerButton" Margin="0,10,0,5" Text="Менеджемент" FontSize="24" VerticalOptions="End" TextColor="White" CornerRadius="75" BackgroundColor="#1DB954" Clicked="managerButton_Clicked"/>
             
             <Button
                 x:Name="mainMenuButton"
