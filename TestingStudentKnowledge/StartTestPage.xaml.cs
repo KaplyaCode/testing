@@ -30,12 +30,18 @@ namespace TestingStudentKnowledge
         public List<Question> PsychologyGroup = new List<Question>();
         public List<Question> ManagerGroup = new List<Question>();
 
+        public User currentUser = (User)Application.Current.Properties["currentUser"];
+        public int coincidenceDivider = 0;
+
 
         public void ProgrammingGroupCreate(object sender, EventArgs e)
         {
             foreach (var item in InputList)
                 if (item.Facult == "Програмування")
+                {
                     ProgrammingGroup.Add(item);
+                    coincidenceDivider++;
+                }
 
             Application.Current.Properties["groupQuestions"] = ProgrammingGroup;
         }
@@ -44,7 +50,10 @@ namespace TestingStudentKnowledge
         {
             foreach (var item in InputList)
                 if (item.Facult == "Право")
+                {
                     LawGroup.Add(item);
+                    coincidenceDivider++;
+                }
 
             Application.Current.Properties["questions"] = LawGroup;
         }
@@ -52,8 +61,11 @@ namespace TestingStudentKnowledge
         public void EconomicGroupCreate(object sender, EventArgs e)
         {
             foreach (var item in InputList)
-                if (item.Facult == "Економіка")
+                if (item.Facult == "Економіка") 
+                {
                     EconomicGroup.Add(item);
+                    coincidenceDivider++;
+                }
 
             Application.Current.Properties["questions"] = EconomicGroup;
         }
@@ -62,7 +74,10 @@ namespace TestingStudentKnowledge
         {
             foreach (var item in InputList)
                 if (item.Facult == "Психологія")
+                {
                     PsychologyGroup.Add(item);
+                    coincidenceDivider++;
+                }
 
             Application.Current.Properties["questions"] = PsychologyGroup;
         }
@@ -71,7 +86,10 @@ namespace TestingStudentKnowledge
         {
             foreach (var item in InputList)
                 if (item.Facult == "Менеджемент")
+                {
                     ManagerGroup.Add(item);
+                    coincidenceDivider++;
+                }
 
             Application.Current.Properties["questions"] = ManagerGroup;
         }
@@ -81,37 +99,11 @@ namespace TestingStudentKnowledge
             await Navigation.PopAsync();
         }
 
-        private async void programminButton_Clicked(object sender, EventArgs e)
+        private async void GoToTestPage(object sender, EventArgs e)
         {
             await Task.Delay(150);
-            TestPage testPage = new TestPage();
-            await Navigation.PushAsync(testPage);
-        }
-
-        private async void lawButton_Clicked(object sender, EventArgs e)
-        {
-            await Task.Delay(150);
-            TestPage testPage = new TestPage();
-            await Navigation.PushAsync(testPage);
-        }
-
-        private async void economicButton_Clicked(object sender, EventArgs e)
-        {
-            await Task.Delay(150);
-            TestPage testPage = new TestPage();
-            await Navigation.PushAsync(testPage);
-        }
-
-        private async void psychologyButton_Clicked(object sender, EventArgs e)
-        {
-            await Task.Delay(150);
-            TestPage testPage = new TestPage();
-            await Navigation.PushAsync(testPage);
-        }
-
-        private async void managerButton_Clicked(object sender, EventArgs e)
-        {
-            await Task.Delay(150);
+            currentUser.weigth = (double)(currentUser.weigth / coincidenceDivider);
+            Application.Current.Properties["currentUser"] = currentUser;
             TestPage testPage = new TestPage();
             await Navigation.PushAsync(testPage);
         }

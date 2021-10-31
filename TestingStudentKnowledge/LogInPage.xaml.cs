@@ -17,8 +17,13 @@ namespace TestingStudentKnowledge
             InitializeComponent();
         }
 
+        public User currentUser = new User();
         private async void GoToMainMenu(object sender, EventArgs e)
         {
+            currentUser.name = nameEntry.Text;
+            currentUser.surname = surNameEntry.Text;
+
+            Application.Current.Properties["currentUser"] = currentUser;
             MainMenu mainMenu = new MainMenu();
             await Navigation.PushAsync(mainMenu);
         }
