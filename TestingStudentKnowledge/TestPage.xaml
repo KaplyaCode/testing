@@ -3,14 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TestingStudentKnowledge.TestPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20,20,20,20" BackgroundColor="#191414">
             <Label x:Name = "questionLabel"
                 HorizontalOptions="CenterAndExpand"
-				FontSize="36"
+				FontSize="24"
                 FontAttributes="Bold"
                 TextColor="#1DB954"
-                Margin="0, 150, 0, 0"
+                Margin="0, 0, 0, 0"
 				/>
+            <ListView x:Name="QuestList" HasUnevenRows="True" RowHeight="50">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding}" FontSize="20" TextColor="#1DB954" Margin="20,10,20,10"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                x:Name="next"
+                Text="Далі"
+                TextTransform="None"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="#1DB954"
+                CornerRadius="75"
+                Margin="20, 0, 20, 0"
+                Clicked="nextQuestion"
+                HorizontalOptions="FillAndExpand"
+                />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
