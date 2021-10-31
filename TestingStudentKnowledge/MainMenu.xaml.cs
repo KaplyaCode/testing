@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace TestingStudentKnowledge
 {
@@ -13,7 +15,9 @@ namespace TestingStudentKnowledge
         public MainMenu()
         {
             InitializeComponent();
+            SetUserName();
             startTestButton.Clicked += CreateQuestions;
+            eraseMyResultsButton.Clicked += RemoveUserName;
         }
 
         public List<Question> Questions = new List<Question>();
@@ -67,6 +71,21 @@ namespace TestingStudentKnowledge
             Application.Current.Properties["questions"] = Questions;
             StartTestPage startTestPage = new StartTestPage();
             await Navigation.PushAsync(startTestPage);
+        }
+
+        public void SetUserName()
+        {
+            string name = Preferences.Get("name", ";)");
+            string surName = Preferences.Get("surName", "Користувач");
+
+            labelUser.Text = String.Empty;
+            labelUser.Text = surName + " " + name;
+        }
+
+        public void RemoveUserName(object sender, EventArgs e)
+        {
+            Preferences.Remove("name");
+            Preferences.Remove("surName");
         }
     }
 }

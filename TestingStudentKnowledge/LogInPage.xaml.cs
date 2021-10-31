@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace TestingStudentKnowledge
 {
@@ -15,6 +16,16 @@ namespace TestingStudentKnowledge
         public LogInPage()
         {
             InitializeComponent();
+            logInButton.Clicked += SaveUserName;
+        }
+
+        public void SaveUserName(object sender, EventArgs e)
+        {
+            string name = nameEntry.Text;
+            string surName = surNameEntry.Text;
+
+            Preferences.Set("name", name);
+            Preferences.Set("surName", surName);
         }
 
         private async void GoToMainMenu(object sender, EventArgs e)
