@@ -1,9 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -17,9 +13,9 @@ namespace TestingStudentKnowledge
         public ResultsPage()
         {
             InitializeComponent();
-            //Load();
-            //ReadFile();
-            localPath = Path.Combine(FileSystem.CacheDirectory);
+            Load();
+            ReadFile();
+            localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }
 
         const string resultsFileName = "ResultsFile.txt";
@@ -43,7 +39,7 @@ namespace TestingStudentKnowledge
 
         private void Load()
         {
-            TestLabel.Text = File.ReadAllText(localPath);
+            TestLabel.Text = File.ReadAllText(Path.Combine(localPath, resultsFileName));
         }
 
         private void Save()
@@ -51,10 +47,11 @@ namespace TestingStudentKnowledge
             File.WriteAllText(localPath, TestLabel.Text);
         }
 
-        //полезный мусор, не понятно как записывать в файл
+        // полезный мусор, не понятно как записывать в файл
         // System.IO.File.Delete("/storage/emulated/0/Android/data/com.companyname.app/files/count.txt");
 
         // adb shell pm grant com.companyname.app android.permission.WRITE_EXTERNAL_STORAGE
         // https://docs.microsoft.com/en-us/xamarin/android/platform/files/external-storage?tabs=windows
+        // await Application.Current.SavePropertiesAsync();
     }
 }

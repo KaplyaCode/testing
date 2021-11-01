@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -43,6 +40,10 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
+            if (Application.Current.Properties.ContainsKey("groupQuestions"))
+            {
+                Application.Current.Properties.Remove("groupQuestions");
+            }
             Application.Current.Properties["groupQuestions"] = ProgrammingGroup;
         }
 
@@ -55,6 +56,10 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
+            if (Application.Current.Properties.ContainsKey("groupQuestions"))
+            {
+                Application.Current.Properties.Remove("groupQuestions");
+            }
             Application.Current.Properties["groupQuestions"] = LawGroup;
         }
 
@@ -67,6 +72,10 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
+            if (Application.Current.Properties.ContainsKey("groupQuestions"))
+            {
+                Application.Current.Properties.Remove("groupQuestions");
+            }
             Application.Current.Properties["groupQuestions"] = EconomicGroup;
         }
 
@@ -79,6 +88,10 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
+            if (Application.Current.Properties.ContainsKey("groupQuestions"))
+            {
+                Application.Current.Properties.Remove("groupQuestions");
+            }
             Application.Current.Properties["groupQuestions"] = PsychologyGroup;
         }
 
@@ -91,6 +104,10 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
+            if (Application.Current.Properties.ContainsKey("groupQuestions"))
+            {
+                Application.Current.Properties.Remove("groupQuestions");
+            }
             Application.Current.Properties["groupQuestions"] = ManagerGroup;
         }
 

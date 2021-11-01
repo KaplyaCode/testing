@@ -1,11 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -20,7 +17,7 @@ namespace TestingStudentKnowledge
             InitializeComponent();
             TurnOnNextButton();
 
-            localPath = Path.Combine(FileSystem.CacheDirectory);
+            localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             questionLabel.Text = GroupQuestions[currentQuestion].question;
             QuestList.ItemsSource = GroupQuestions[currentQuestion].Answers;
             
@@ -33,32 +30,48 @@ namespace TestingStudentKnowledge
         public User currentUser = (User)Application.Current.Properties["currentUser"];
 
         public int currentQuestion = 0;
+        public int questionCount;
 
         public void nextQuestion(object sender, EventArgs e)
         {
-            int questionCount = GroupQuestions.Count() - 1;
+            questionCount = 0;
+            questionCount = GroupQuestions.Count() - 1;
 
             if (currentQuestion < questionCount)
             {
                 TurnOnNextButton();
                 if (GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem) == GroupQuestions[currentQuestion].correctAnswer)
                 {
-                    DisplayAlert("Правильна відповідь!", "Ваша відповідь: " + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer, "ok");
+                    DisplayAlert("Правильна відповідь!", "Ваша відповідь: " 
+                        + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") 
+                        + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer 
+                        + "\ncurrentQuestion: " + currentQuestion 
+                        + "\nquestionCount" + questionCount, "ok");
                     currentUser.score += currentUser.weigth;
+                    currentQuestion++;
                 } else
                 {
-                    DisplayAlert("Неправильна відповідь!", "Ваша відповідь: " + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer, "ok");
+                    DisplayAlert("Неправильна відповідь!", "Ваша відповідь: " 
+                        + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") 
+                        + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer 
+                        + "\ncurrentQuestion: " + currentQuestion
+                        + "\nquestionCount" + questionCount, "ok");
+                    currentQuestion++;
                 }
-                currentQuestion++;
                 questionLabel.Text = GroupQuestions[currentQuestion].question;
                 QuestList.ItemsSource = GroupQuestions[currentQuestion].Answers;
             }
             else if (currentQuestion == questionCount)
             {
-                DisplayAlert("Результат!", "Рахунок: " + currentUser.score + "/" + currentUser.weigth * 5, "ok");
                 TurnOnMainMenuButton();
-                //Save();
+                DisplayAlert("Результат!", "Рахунок: " 
+                    + currentUser.score + "/" + currentUser.weigth * 5 
+                    + "\n" + Path.Combine(localPath, resultsFileName) 
+                    + "\n" + ResultToString(), "ok");
+                Save();
+                Application.Current.Properties.Remove("groupQuestions");
                 currentUser.score = 0;
+                currentUser.weigth = 0;
             }
         }
 
@@ -83,7 +96,7 @@ namespace TestingStudentKnowledge
             next.IsVisible = true;
         }
 
-        public string ResultTostring()
+        public string ResultToString()
         {
             StringBuilder resultString = new StringBuilder();
             resultString.Append(currentUser.surname 
@@ -94,7 +107,7 @@ namespace TestingStudentKnowledge
 
         private void Save()
         {
-            File.WriteAllText(resultsFileName, ResultTostring());
+            File.WriteAllText(Path.Combine(localPath, resultsFileName), ResultToString());
         }
     }
 }
