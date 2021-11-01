@@ -11,23 +11,24 @@
             </StackLayout>
             
             <StackLayout VerticalOptions="CenterAndExpand">
-            <Frame BackgroundColor="#191414" BorderColor="White"  Padding="0" TranslationY="-300">
-                <Grid Padding="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
+                <Frame BackgroundColor="#191414" BorderColor="White"  Padding="0" TranslationY="-300">
+                    <Grid Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label Text="Прізвище" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="0"/>
-                    <Label Text="Спеціальність" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" TextColor="White" Grid.Column="1"/>
-                    <Label Text="Оцінка" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="2"/>
+                        <Label Text="Прізвище" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="0"/>
+                        <Label Text="Спеціальність" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" TextColor="White" Grid.Column="1"/>
+                        <Label Text="Оцінка" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="2"/>
 
-                    <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
-                    <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
-                    <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
-                </Grid>
-            </Frame>
+                        <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
+                        <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
+                        <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Grid>
+                </Frame>
+                <Label x:Name="TestLabel" Text="" FontSize="30" FontAttributes="Bold" Margin="0,0,0,20" TextColor="#1DB954" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal" VerticalOptions="End">

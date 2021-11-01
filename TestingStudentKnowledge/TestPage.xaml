@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TestingStudentKnowledge.TestPage">
+             x:Class="TestingStudentKnowledge.TestPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout Padding="20,20,20,20" BackgroundColor="#191414">
             <Label x:Name = "questionLabel"
@@ -34,6 +35,18 @@
                 Clicked="nextQuestion"
                 HorizontalOptions="FillAndExpand"
                 />
-        </StackLayout>
+            <Button
+                x:Name="mainMenuButton"
+                Text="Головне меню"
+                TextTransform="None"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="#1DB954"
+                CornerRadius="75"
+                Margin="60,20,60,20"
+                Clicked="GoToMainMenu"
+                HorizontalOptions="CenterAndExpand"
+                />
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

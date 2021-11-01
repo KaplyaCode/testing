@@ -16,25 +16,17 @@ namespace TestingStudentKnowledge
         public LogInPage()
         {
             InitializeComponent();
-            logInButton.Clicked += SaveUserName;
-        }
-
-        public void SaveUserName(object sender, EventArgs e)
-        {
-            string name = nameEntry.Text;
-            string surName = surNameEntry.Text;
-
-            Preferences.Set("name", name);
-            Preferences.Set("surName", surName);
         }
 
         public User currentUser = new User();
+
         private async void GoToMainMenu(object sender, EventArgs e)
         {
             currentUser.name = nameEntry.Text;
             currentUser.surname = surNameEntry.Text;
 
             Application.Current.Properties["currentUser"] = currentUser;
+
             MainMenu mainMenu = new MainMenu();
             await Navigation.PushAsync(mainMenu);
         }

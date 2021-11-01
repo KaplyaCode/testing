@@ -17,10 +17,10 @@ namespace TestingStudentKnowledge
             InitializeComponent();
             SetUserName();
             startTestButton.Clicked += CreateQuestions;
-            eraseMyResultsButton.Clicked += RemoveUserName;
         }
 
         public List<Question> Questions = new List<Question>();
+        public User currentUser = (User)Application.Current.Properties["currentUser"];
 
         public void CreateQuestions(object sender, EventArgs e)
         {
@@ -75,17 +75,11 @@ namespace TestingStudentKnowledge
 
         public void SetUserName()
         {
-            string name = Preferences.Get("name", ";)");
-            string surName = Preferences.Get("surName", "Користувач");
+            string name = currentUser.name;
+            string surName = currentUser.surname;
 
             labelUser.Text = String.Empty;
             labelUser.Text = surName + " " + name;
-        }
-
-        public void RemoveUserName(object sender, EventArgs e)
-        {
-            Preferences.Remove("name");
-            Preferences.Remove("surName");
         }
     }
 }

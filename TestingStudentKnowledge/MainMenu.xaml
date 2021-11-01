@@ -11,7 +11,7 @@
                 <Label Text="Користувач"
                        x:Name="labelUser"
 				HorizontalOptions="CenterAndExpand"
-				FontSize="36"
+				FontSize="30"
                 FontAttributes="Bold"
                 TextColor="#1DB954"
                 Margin="0, 140, 0, 0"

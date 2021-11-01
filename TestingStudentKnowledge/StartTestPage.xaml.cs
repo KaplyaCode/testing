@@ -31,7 +31,7 @@ namespace TestingStudentKnowledge
         public List<Question> ManagerGroup = new List<Question>();
 
         public User currentUser = (User)Application.Current.Properties["currentUser"];
-        public int coincidenceDivider = 0;
+        public int scoreDivider = 0;
 
 
         public void ProgrammingGroupCreate(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace TestingStudentKnowledge
                 if (item.Facult == "Програмування")
                 {
                     ProgrammingGroup.Add(item);
-                    coincidenceDivider++;
+                    scoreDivider++;
                 }
 
             Application.Current.Properties["groupQuestions"] = ProgrammingGroup;
@@ -52,10 +52,10 @@ namespace TestingStudentKnowledge
                 if (item.Facult == "Право")
                 {
                     LawGroup.Add(item);
-                    coincidenceDivider++;
+                    scoreDivider++;
                 }
 
-            Application.Current.Properties["questions"] = LawGroup;
+            Application.Current.Properties["groupQuestions"] = LawGroup;
         }
 
         public void EconomicGroupCreate(object sender, EventArgs e)
@@ -64,10 +64,10 @@ namespace TestingStudentKnowledge
                 if (item.Facult == "Економіка") 
                 {
                     EconomicGroup.Add(item);
-                    coincidenceDivider++;
+                    scoreDivider++;
                 }
 
-            Application.Current.Properties["questions"] = EconomicGroup;
+            Application.Current.Properties["groupQuestions"] = EconomicGroup;
         }
 
         public void PsychologyGroupCreate(object sender, EventArgs e)
@@ -76,10 +76,10 @@ namespace TestingStudentKnowledge
                 if (item.Facult == "Психологія")
                 {
                     PsychologyGroup.Add(item);
-                    coincidenceDivider++;
+                    scoreDivider++;
                 }
 
-            Application.Current.Properties["questions"] = PsychologyGroup;
+            Application.Current.Properties["groupQuestions"] = PsychologyGroup;
         }
 
         public void ManagerGroupCreate(object sender, EventArgs e)
@@ -88,10 +88,10 @@ namespace TestingStudentKnowledge
                 if (item.Facult == "Менеджемент")
                 {
                     ManagerGroup.Add(item);
-                    coincidenceDivider++;
+                    scoreDivider++;
                 }
 
-            Application.Current.Properties["questions"] = ManagerGroup;
+            Application.Current.Properties["groupQuestions"] = ManagerGroup;
         }
 
         private async void GoToMainMenu(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace TestingStudentKnowledge
         private async void GoToTestPage(object sender, EventArgs e)
         {
             await Task.Delay(150);
-            currentUser.weigth = (double)(currentUser.weigth / coincidenceDivider);
+            currentUser.weigth = (double)(currentUser.weigth / scoreDivider);
             Application.Current.Properties["currentUser"] = currentUser;
             TestPage testPage = new TestPage();
             await Navigation.PushAsync(testPage);

@@ -14,6 +14,7 @@
 				/>
             <Entry
                 x:Name="nameEntry"
+                MaxLength="10"
                 FontSize="36"
                 TextColor="White"
                 Placeholder="Ім'я"
@@ -22,6 +23,7 @@
                 />
             <Entry
                 x:Name="surNameEntry"
+                MaxLength="10"
                 FontSize="36"
                 TextColor="White"
                 Placeholder="Прізвище"
