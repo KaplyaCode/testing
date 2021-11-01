@@ -40,11 +40,8 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
-            if (Application.Current.Properties.ContainsKey("groupQuestions"))
-            {
-                Application.Current.Properties.Remove("groupQuestions");
-            }
             Application.Current.Properties["groupQuestions"] = ProgrammingGroup;
+            
         }
 
         public void LawGroupCreate(object sender, EventArgs e)
@@ -56,10 +53,6 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
-            if (Application.Current.Properties.ContainsKey("groupQuestions"))
-            {
-                Application.Current.Properties.Remove("groupQuestions");
-            }
             Application.Current.Properties["groupQuestions"] = LawGroup;
         }
 
@@ -72,10 +65,6 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
-            if (Application.Current.Properties.ContainsKey("groupQuestions"))
-            {
-                Application.Current.Properties.Remove("groupQuestions");
-            }
             Application.Current.Properties["groupQuestions"] = EconomicGroup;
         }
 
@@ -88,10 +77,6 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
-            if (Application.Current.Properties.ContainsKey("groupQuestions"))
-            {
-                Application.Current.Properties.Remove("groupQuestions");
-            }
             Application.Current.Properties["groupQuestions"] = PsychologyGroup;
         }
 
@@ -104,10 +89,6 @@ namespace TestingStudentKnowledge
                     scoreDivider++;
                 }
 
-            if (Application.Current.Properties.ContainsKey("groupQuestions"))
-            {
-                Application.Current.Properties.Remove("groupQuestions");
-            }
             Application.Current.Properties["groupQuestions"] = ManagerGroup;
         }
 
@@ -120,6 +101,7 @@ namespace TestingStudentKnowledge
         {
             await Task.Delay(150);
             currentUser.weigth = (double)(currentUser.weigth / scoreDivider);
+            scoreDivider = 0;
             Application.Current.Properties["currentUser"] = currentUser;
             TestPage testPage = new TestPage();
             await Navigation.PushAsync(testPage);

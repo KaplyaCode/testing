@@ -30,49 +30,49 @@ namespace TestingStudentKnowledge
         public User currentUser = (User)Application.Current.Properties["currentUser"];
 
         public int currentQuestion = 0;
-        public int questionCount;
 
         public void nextQuestion(object sender, EventArgs e)
         {
-            questionCount = 0;
-            questionCount = GroupQuestions.Count() - 1;
 
-            if (currentQuestion < questionCount)
+            if (currentQuestion < GroupQuestions.Count())
             {
-                TurnOnNextButton();
                 if (GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem) == GroupQuestions[currentQuestion].correctAnswer)
                 {
                     DisplayAlert("Правильна відповідь!", "Ваша відповідь: " 
                         + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") 
                         + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer 
                         + "\ncurrentQuestion: " + currentQuestion 
-                        + "\nquestionCount" + questionCount, "ok");
+                        + "\nquestionCount" + GroupQuestions.Count(), "ok");
                     currentUser.score += currentUser.weigth;
-                    currentQuestion++;
-                } else
+                } 
+                else
                 {
                     DisplayAlert("Неправильна відповідь!", "Ваша відповідь: " 
                         + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") 
                         + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer 
                         + "\ncurrentQuestion: " + currentQuestion
-                        + "\nquestionCount" + questionCount, "ok");
-                    currentQuestion++;
+                        + "\nquestionCount" + GroupQuestions.Count(), "ok");
                 }
-                questionLabel.Text = GroupQuestions[currentQuestion].question;
-                QuestList.ItemsSource = GroupQuestions[currentQuestion].Answers;
+
             }
-            else if (currentQuestion == questionCount)
+            if (currentQuestion + 1 != GroupQuestions.Count())
+            {
+                questionLabel.Text = GroupQuestions[currentQuestion + 1].question;
+                QuestList.ItemsSource = GroupQuestions[currentQuestion + 1].Answers;
+            }
+            if (currentQuestion + 1 == GroupQuestions.Count())
             {
                 TurnOnMainMenuButton();
                 DisplayAlert("Результат!", "Рахунок: " 
-                    + currentUser.score + "/" + currentUser.weigth * 5 
+                    + currentUser.score + "/" + currentUser.weigth
                     + "\n" + Path.Combine(localPath, resultsFileName) 
                     + "\n" + ResultToString(), "ok");
                 Save();
-                Application.Current.Properties.Remove("groupQuestions");
+                GroupQuestions.Clear();
                 currentUser.score = 0;
-                currentUser.weigth = 0;
+                currentUser.weigth = 100.0;
             }
+            currentQuestion++;
         }
 
         private async void GoToMainMenu(object sender, EventArgs e)
