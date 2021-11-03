@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
 
 namespace TestingStudentKnowledge
 {
@@ -16,6 +11,10 @@ namespace TestingStudentKnowledge
         public LogInPage()
         {
             InitializeComponent();
+            ObservableCollection<Result> Results;
+            Results = new ObservableCollection<Result>()
+            { };
+            Application.Current.Properties["results"] = Results;
         }
 
         public User currentUser = new User();

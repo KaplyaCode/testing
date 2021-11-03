@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <AssemblyName>TestingStudentKnowledge</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,7 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Results.cs" />
+    <Compile Remove="BaseViewModel.cs" />
+    <Compile Remove="ResultListViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

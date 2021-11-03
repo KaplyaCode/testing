@@ -7,42 +7,66 @@
         <StackLayout Padding="20" Spacing="0" BackgroundColor="#191414" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             
             <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <Label Text="Таблиця результатів" FontSize="30" FontAttributes="Bold" Margin="0,0,0,20" TextColor="#1DB954" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Таблиця результатів" FontSize="30" FontAttributes="Bold" Margin="20,20,20,20" TextColor="#1DB954" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
-            
+
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Frame BackgroundColor="#191414" BorderColor="White"  Padding="0" TranslationY="-300">
+                <Frame BackgroundColor="#191414" BorderColor="White" HeightRequest="60" Padding="0">
                     <Grid Padding="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6.5*"/>
+                            <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Прізвище" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="0"/>
-                        <Label Text="Спеціальність" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" TextColor="White" Grid.Column="1"/>
-                        <Label Text="Оцінка" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" TextColor="White" Grid.Column="2"/>
+                        <Label Margin="10, 0, 10, 0" Text="Прізвище" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" TextColor="White" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label Margin="10, 0, 10, 0" Text="Спеціальність" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" TextColor="White" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label Margin="10, 0, 10, 0" Text="Оцінка" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" TextColor="White" Grid.Column="2" FontAttributes="Bold"/>
 
                         <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                         <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                         <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                     </Grid>
                 </Frame>
-                <Label x:Name="TestLabel" Text="" FontSize="30" FontAttributes="Bold" Margin="0,0,0,20" TextColor="#1DB954" HorizontalOptions="CenterAndExpand" />
+                <ListView x:Name="resultsListView" ItemsSource="{Binding}" ItemSelected="OnListViewItemSelected" SeparatorVisibility="None" SelectionMode="Single" HasUnevenRows="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BackgroundColor="#191414" BorderColor="White" Padding="0" >
+                                    <Grid Padding="0" RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="6.5*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Margin="10, 0, 10, 0" Text="{Binding Surname}" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="18" TextColor="White" Grid.Column="0"/>
+                                        <Label Margin="10, 0, 10, 0" Text="{Binding Faculty}" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="16" TextColor="White" Grid.Column="1"/>
+                                        <Label Margin="10, 0, 10, 0" Text="{Binding Score}" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="18" TextColor="White" Grid.Column="2"/>
+
+                                        <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <BoxView BackgroundColor="White" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
-            
+
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
-            <Button
+                <Button
                 x:Name="mainMenuButton"
                 Text="Головне меню"
                 TextTransform="None"
-                FontSize="28"
+                FontSize="26"
                 TextColor="White"
                 BackgroundColor="#1DB954"
                 CornerRadius="75"
-                Margin="60,20,60,20"
-                Clicked="GoToMainMenu"
+                    Margin="60,0,60,0"
                 HorizontalOptions="CenterAndExpand"
+                Clicked="GoToMainMenu"
                 />
             </StackLayout>
         </StackLayout>

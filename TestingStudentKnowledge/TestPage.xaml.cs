@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
@@ -17,14 +17,9 @@ namespace TestingStudentKnowledge
             InitializeComponent();
             TurnOnNextButton();
 
-            localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             questionLabel.Text = GroupQuestions[currentQuestion].question;
             QuestList.ItemsSource = GroupQuestions[currentQuestion].Answers;
-            
         }
-
-        const string resultsFileName = "ResultsFile.txt";
-        string localPath;
 
         public List<Question> GroupQuestions = (List<Question>)Application.Current.Properties["groupQuestions"];
         public User currentUser = (User)Application.Current.Properties["currentUser"];
@@ -33,25 +28,20 @@ namespace TestingStudentKnowledge
 
         public void nextQuestion(object sender, EventArgs e)
         {
-
             if (currentQuestion < GroupQuestions.Count())
             {
                 if (GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem) == GroupQuestions[currentQuestion].correctAnswer)
                 {
                     DisplayAlert("Правильна відповідь!", "Ваша відповідь: " 
                         + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") 
-                        + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer 
-                        + "\ncurrentQuestion: " + currentQuestion 
-                        + "\nquestionCount" + GroupQuestions.Count(), "ok");
+                        + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer, "ok");
                     currentUser.score += currentUser.weigth;
                 } 
                 else
                 {
                     DisplayAlert("Неправильна відповідь!", "Ваша відповідь: " 
                         + GroupQuestions[currentQuestion].Answers.IndexOf(QuestList.SelectedItem + "") 
-                        + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer 
-                        + "\ncurrentQuestion: " + currentQuestion
-                        + "\nquestionCount" + GroupQuestions.Count(), "ok");
+                        + "\nПравильна відповідь: " + GroupQuestions[currentQuestion].correctAnswer, "ok");
                 }
 
             }
@@ -64,10 +54,9 @@ namespace TestingStudentKnowledge
             {
                 TurnOnMainMenuButton();
                 DisplayAlert("Результат!", "Рахунок: " 
-                    + currentUser.score + "/" + currentUser.weigth
-                    + "\n" + Path.Combine(localPath, resultsFileName) 
+                    + currentUser.score + "/" + currentUser.weigth * 5
                     + "\n" + ResultToString(), "ok");
-                Save();
+                SaveResults();
                 GroupQuestions.Clear();
                 currentUser.score = 0;
                 currentUser.weigth = 100.0;
@@ -75,9 +64,12 @@ namespace TestingStudentKnowledge
             currentQuestion++;
         }
 
-        private async void GoToMainMenu(object sender, EventArgs e)
+        void SaveResults()
         {
-            await Navigation.PopAsync();
+            ObservableCollection<Result> Results;
+            Results = (ObservableCollection<Result>)Application.Current.Properties["results"];
+            Results.Add(new Result() { Surname = currentUser.surname, Faculty = GroupQuestions[currentQuestion].Facult, Score = currentUser.score });
+            Application.Current.Properties["results"] = Results;
         }
 
         private void TurnOnMainMenuButton()
@@ -99,15 +91,15 @@ namespace TestingStudentKnowledge
         public string ResultToString()
         {
             StringBuilder resultString = new StringBuilder();
-            resultString.Append(currentUser.surname 
+            resultString.Append(currentUser.surname
                 + " " + GroupQuestions[currentQuestion].Facult 
                 + " " + currentUser.score);
             return resultString.ToString();
         }
-
-        private void Save()
+        
+        private async void GoToMainMenu(object sender, EventArgs e)
         {
-            File.WriteAllText(Path.Combine(localPath, resultsFileName), ResultToString());
+            await Navigation.PopAsync();
         }
     }
 }
